@@ -1,34 +1,46 @@
-## Usage
+# Frontend Mentor - Password generator app solution
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
+This is a solution to the [To Do app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). I have made some adjustments to the design.
 
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
+## Table of contents
 
-```bash
-$ npm install # or pnpm install or yarn install
-```
+- [The challenge](#the-challenge)
+- [Screenshot](#screenshot)
+- [Links](#links)
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+## The challenge
 
-## Available Scripts
+Users should be able to:
 
-In the project directory, you can run:
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Add new todos to the list
+- Mark todos as complete
+- Delete todos from the list
+- Filter by all/active/complete todos
+- Clear all completed todos
+- Toggle light and dark mode
 
-### `npm dev` or `npm start`
+The solution was built using Solid.js, TypeScript and Sass.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Screenshots
 
-The page will reload if you make edits.<br>
+Screen:
 
-### `npm run build`
+![Screen: Dark Mode](./src/assets/screenshots/desktop-dark.png)
+![Screen: Light Mode](./src/assets/screenshots/desktop-light.png)
 
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
+Tablet:
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+![Tablet: Dark Mode](./src/assets/screenshots/tablet-dark.png)
+![Tablet: Light Mode](./src/assets/screenshots/tablet-light.png)
 
-## Deployment
+Mobile:
 
-You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
+![Mobile: Dark Mode](./src/assets/screenshots/mobile-dark.png)
+![Mobile: Light Mode](./src/assets/screenshots/mobile-light.png)
+
+## Links
+
+- [GitHub Repo](https://github.com/ursasimenc/Solid-ToDo)
+- [Demo](https://solid-todo-us.netlify.app)

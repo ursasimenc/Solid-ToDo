@@ -2,12 +2,7 @@
 
 @media (prefers-color-scheme: light) {
 	:root {
-		--Very_Light_Gray: hsl(0, 0%, 98%);
-		--Very_Light_Grayish_Blue: hsl(236, 33%, 92%);
-		--Light_Grayish_Blue: hsl(233, 11%, 84%);
-		--Dark_Grayish_Blue: hsl(236, 9%, 61%);
-		--Very_Dark_Grayish_Blue: hsl(235, 19%, 35%);
-
+		--bottom-border: hsla(237, 9%, 61%, 0.6);
 		--title-text: white;
 		--stat-text: hsl(234, 11%, 52%);
 		--border-check: rgb(243, 130, 64);
@@ -21,15 +16,8 @@
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--Very_Dark_Blue: hsl(235, 21%, 11%);
-		--Very_Dark_Unsaturated_Blue: hsl(235, 24%, 19%);
-		--Light_Grayish_Blue: hsl(234, 39%, 85%);
-		--Light_Grayish_Blue_hover: hsl(236, 33%, 92%);
-		--Dark_Grayish_Blue: hsl(234, 11%, 52%);
-		--Very_Dark_Grayish_Blue: hsl(233, 14%, 35%);
-		--Very_Dark_Grayish_Blue: hsl(237, 14%, 26%);
-
-		--accent: hsl(201, 70%, 33%);
+		--bottom-border: hsl(237, 14%, 26%);
+		--accent: hsl(201, 38%, 30%);
 		--title-text: white;
 		--stat-text: hsl(234, 11%, 52%);
 		--border-check: hsl(233, 14%, 35%);
@@ -55,10 +43,6 @@
 	@if ($gap != 0) {
 		gap: $gap;
 	}
-}
-
-@mixin transition($property) {
-	transition: $property 0.2s ease-in-out;
 }
 
 *,
@@ -146,20 +130,28 @@ body {
 
 	input[type="checkbox"] {
 		@include size(20px, 20px);
+		@include flex(center, center, 0);
 		-webkit-appearance: none;
 		-moz-appearance: none;
 		border-radius: 5px;
-		outline: 1px solid var(--border-check);
+		border: 1px solid var(--border-check);
 		background: transparent;
 		cursor: pointer;
 
+		&:hover {
+			border: 2px solid var(--accent);
+		}
+
 		&:checked {
-			background-color: var(--Bright_Blue);
+			background-color: var(--accent);
 			background-image: var(--bg-Gradient);
 			background-size: 100%;
 			background-repeat: no-repeat;
 			background-position: center;
 			outline: none;
+			&:after {
+				content: url(./assets/icon-check.svg);
+			}
 		}
 	}
 
@@ -167,31 +159,32 @@ body {
 		@include flex(center, center, 0);
 		@include size(100%, fit-content);
 		max-width: 600px;
-		padding: 7px;
 		border-radius: 12px;
 		background-color: var(--div-bg);
+	}
 
-		&.light {
-			--div-bg: hsl(0, 0%, 100%);
-			--border-check: rgb(243, 130, 64);
-			--bg-Gradient: linear-gradient(45deg, rgb(214, 58, 58), rgb(243, 130, 64));
-			--text: hsl(235, 19%, 35%);
-		}
+	&.light {
+		--accent: rgb(243, 130, 64);
+		--div-bg: hsl(0, 0%, 100%);
+		--border-check: rgb(243, 130, 64);
+		--bg-Gradient: linear-gradient(45deg, rgb(214, 58, 58), rgb(243, 130, 64));
+		--text: hsl(235, 19%, 35%);
+	}
 
-		&.dark {
-			--div-bg: hsl(235, 21%, 14%);
-			--border-check: hsl(233, 14%, 35%);
-			--bg-Gradient: linear-gradient(45deg, hsl(207, 59%, 16%), hsl(201, 66%, 21%));
-			--text: white;
-		}
+	&.dark {
+		--accent: hsl(201, 38%, 30%);
+		--div-bg: hsl(235, 21%, 14%);
+		--border-check: hsl(233, 14%, 35%);
+		--bg-Gradient: linear-gradient(45deg, hsl(207, 59%, 16%), hsl(201, 66%, 21%));
+		--text: white;
 	}
 }
 
 .list {
-	@include flex(center, center, 1rem, column);
+	@include flex(center, center, 0rem, column);
 	@include size(90vw, fit-content);
+	padding-inline: 8px;
 	max-width: 600px;
-	padding: 7px;
 	border-radius: 12px;
 	background-color: var(--div-bg);
 
@@ -199,6 +192,9 @@ body {
 		@include flex(center, center, 1rem);
 		@include size(100%, 50px);
 		position: relative;
+		padding: 1.75rem 0rem;
+		border: 1px solid transparent;
+		border-bottom: 1px solid var(--bottom-border);
 		.item-task {
 			@include size(90%, fit-content);
 			color: var(--text);
@@ -211,14 +207,15 @@ body {
 			right: 0;
 			opacity: 0;
 			cursor: pointer;
+		}
 
-			&:hover {
-				opacity: 100;
-			}
+		&:hover #cross {
+			opacity: 100;
 		}
 	}
 
 	&.light {
+		--bottom-border: hsla(237, 9%, 61%, 0.6);
 		--div-bg: hsl(0, 0%, 100%);
 		--border-check: rgb(243, 130, 64);
 		--bg-Gradient: linear-gradient(45deg, rgb(214, 58, 58), rgb(243, 130, 64));
@@ -226,6 +223,7 @@ body {
 	}
 
 	&.dark {
+		--bottom-border: hsl(237, 14%, 26%);
 		--div-bg: hsl(235, 21%, 14%);
 		--border-check: hsl(233, 14%, 35%);
 		--bg-Gradient: linear-gradient(45deg, hsl(207, 59%, 16%), hsl(201, 66%, 21%));
@@ -236,7 +234,7 @@ body {
 .stats {
 	@include size(100%, fit-content);
 	@include flex(space-between, center, 0);
-	padding: 0.5rem 1rem;
+	padding: 1rem 0.5rem;
 	font-size: 0.9rem;
 	color: var(--stat-text);
 
@@ -270,7 +268,7 @@ body {
 		--accent: rgb(243, 130, 64);
 	}
 	&.dark {
-		--accent: hsl(201, 70%, 33%);
+		--accent: hsl(201, 38%, 30%);
 	}
 }
 

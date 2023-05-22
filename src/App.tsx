@@ -11,6 +11,11 @@ const App: Component = () => {
 		const themeConf = window.matchMedia("(prefers-color-scheme: dark)").matches;
 		themeConf ? setTheme("dark") : setTheme("light");
 		let todosStorage = localStorage.getItem("todos") as any;
+		if (todosStorage === null) {
+			todosStorage = [];
+			localStorage.setItem("todos", JSON.stringify(todosStorage));
+		}
+
 		todosStorage = JSON.parse(todosStorage);
 		const undoneTasks = todosStorage.filter((todo: any) => todo.checked === false);
 		setTodos(todosStorage);
@@ -126,38 +131,15 @@ const App: Component = () => {
 				</div>
 			</div>
 			<main>
-				<div class="content">
-					<div class="input adaptive">
+				<div class="content adaptive">
+					<div class="input ">
 						<div class="checkbox-div">
 							<input type="checkbox" name="add-check" id="add-check" />
 						</div>
-						<input type="text" name="add" id="add" onKeyPress={addTask} />
+						<input type="text" name="add" id="add" onKeyPress={addTask} placeholder="Create a new todo..." />
 					</div>
 
 					<div class="list adaptive">
-						<div class="stats adaptive">
-							<div class="uncompleted">
-								{undone()}{" "}
-								<Show when={undone() === 1} fallback={<>items</>}>
-									item
-								</Show>{" "}
-								left
-							</div>
-							<div class="filters">
-								<div class="filter selected" id="filter-1" onClick={() => filterTasks(1)}>
-									All
-								</div>
-								<div class="filter" id="filter-2" onClick={() => filterTasks(2)}>
-									Active
-								</div>
-								<div class="filter" id="filter-3" onClick={() => filterTasks(3)}>
-									Completed
-								</div>
-							</div>
-							<div class="clear" onClick={removeCompletedTasks}>
-								Clear completed
-							</div>
-						</div>
 						<For
 							each={todos}
 							fallback={
@@ -182,7 +164,30 @@ const App: Component = () => {
 									</div>
 								);
 							}}
-						</For>
+						</For>{" "}
+						<div class="stats adaptive">
+							<div class="uncompleted">
+								{undone()}{" "}
+								<Show when={undone() === 1} fallback={<>items</>}>
+									item
+								</Show>{" "}
+								left
+							</div>
+							<div class="filters">
+								<div class="filter selected" id="filter-1" onClick={() => filterTasks(1)}>
+									All
+								</div>
+								<div class="filter" id="filter-2" onClick={() => filterTasks(2)}>
+									Active
+								</div>
+								<div class="filter" id="filter-3" onClick={() => filterTasks(3)}>
+									Completed
+								</div>
+							</div>
+							<div class="clear" onClick={removeCompletedTasks}>
+								Clear completed
+							</div>
+						</div>
 					</div>
 				</div>
 			</main>
