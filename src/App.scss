@@ -1,0 +1,285 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--Very_Light_Gray: hsl(0, 0%, 98%);
+		--Very_Light_Grayish_Blue: hsl(236, 33%, 92%);
+		--Light_Grayish_Blue: hsl(233, 11%, 84%);
+		--Dark_Grayish_Blue: hsl(236, 9%, 61%);
+		--Very_Dark_Grayish_Blue: hsl(235, 19%, 35%);
+
+		--title-text: white;
+		--stat-text: hsl(234, 11%, 52%);
+		--border-check: rgb(243, 130, 64);
+		--accent: rgb(243, 130, 64);
+		--div-bg: hsl(0, 0%, 100%);
+		--text: hsl(235, 19%, 35%);
+		--body-bg: hsl(0, 0%, 95%);
+		--bg-Gradient: linear-gradient(45deg, rgb(214, 58, 58), rgb(243, 130, 64));
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--Very_Dark_Blue: hsl(235, 21%, 11%);
+		--Very_Dark_Unsaturated_Blue: hsl(235, 24%, 19%);
+		--Light_Grayish_Blue: hsl(234, 39%, 85%);
+		--Light_Grayish_Blue_hover: hsl(236, 33%, 92%);
+		--Dark_Grayish_Blue: hsl(234, 11%, 52%);
+		--Very_Dark_Grayish_Blue: hsl(233, 14%, 35%);
+		--Very_Dark_Grayish_Blue: hsl(237, 14%, 26%);
+
+		--accent: hsl(201, 70%, 33%);
+		--title-text: white;
+		--stat-text: hsl(234, 11%, 52%);
+		--border-check: hsl(233, 14%, 35%);
+		--div-bg: hsl(235, 21%, 14%);
+		--text: white;
+		--body-bg: hsl(235, 21%, 11%);
+		--bg-Gradient: linear-gradient(45deg, hsl(207, 59%, 16%), hsl(201, 66%, 21%));
+	}
+}
+
+@mixin size($width, $height: $width) {
+	width: $width;
+	@if $height {
+		height: $height;
+	}
+}
+
+@mixin flex($justify, $align, $gap: 0, $direction: row) {
+	display: flex;
+	justify-content: $justify;
+	align-items: $align;
+	flex-direction: $direction;
+	@if ($gap != 0) {
+		gap: $gap;
+	}
+}
+
+@mixin transition($property) {
+	transition: $property 0.2s ease-in-out;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+body {
+	font-family: "Josefin Sans", sans-serif;
+	margin: 0;
+	padding: 0;
+	font-size: 18px;
+}
+
+.wrapper {
+	@include size(100vw, 100vh);
+	@include flex(start, center, 0, column);
+	background-color: var(--body-bg);
+	margin: 0;
+
+	&.light {
+		--body-bg: hsl(0, 0%, 95%);
+	}
+	&.dark {
+		--body-bg: hsl(235, 21%, 11%);
+	}
+}
+
+.bg-photo {
+	@include size(100vw, 300px);
+	@include flex(center, center);
+	background-image: var(--bg-Gradient);
+
+	&.light {
+		--bg-Gradient: linear-gradient(45deg, rgb(214, 58, 58), rgb(243, 130, 64));
+	}
+
+	&.dark {
+		--bg-Gradient: linear-gradient(45deg, hsl(207, 59%, 16%), hsl(201, 66%, 21%));
+	}
+
+	.title_theme {
+		@include flex(space-between, start, 0);
+		@include size(90vw, 300px);
+		padding-block: 5rem;
+		max-width: 600px;
+
+		#title {
+			text-transform: uppercase;
+			letter-spacing: 10px;
+			color: var(--title-text);
+		}
+
+		svg {
+			cursor: pointer;
+		}
+	}
+}
+
+.content {
+	@include size(90vw, fit-content);
+	@include flex(center, center, 2.5rem, column);
+	position: relative;
+	bottom: 8.5rem;
+
+	input[type="text"] {
+		@include size(90%, 50px);
+		background-color: transparent;
+		border: none;
+		padding-block: 1rem;
+		color: var(--text);
+		font-size: 1.1rem;
+
+		&:focus {
+			outline: none;
+		}
+	}
+
+	.checkbox-div {
+		@include size(50px);
+		@include flex(center, center, 0);
+	}
+
+	input[type="checkbox"] {
+		@include size(20px, 20px);
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		border-radius: 5px;
+		outline: 1px solid var(--border-check);
+		background: transparent;
+		cursor: pointer;
+
+		&:checked {
+			background-color: var(--Bright_Blue);
+			background-image: var(--bg-Gradient);
+			background-size: 100%;
+			background-repeat: no-repeat;
+			background-position: center;
+			outline: none;
+		}
+	}
+
+	.input {
+		@include flex(center, center, 0);
+		@include size(100%, fit-content);
+		max-width: 600px;
+		padding: 7px;
+		border-radius: 12px;
+		background-color: var(--div-bg);
+
+		&.light {
+			--div-bg: hsl(0, 0%, 100%);
+			--border-check: rgb(243, 130, 64);
+			--bg-Gradient: linear-gradient(45deg, rgb(214, 58, 58), rgb(243, 130, 64));
+			--text: hsl(235, 19%, 35%);
+		}
+
+		&.dark {
+			--div-bg: hsl(235, 21%, 14%);
+			--border-check: hsl(233, 14%, 35%);
+			--bg-Gradient: linear-gradient(45deg, hsl(207, 59%, 16%), hsl(201, 66%, 21%));
+			--text: white;
+		}
+	}
+}
+
+.list {
+	@include flex(center, center, 1rem, column);
+	@include size(90vw, fit-content);
+	max-width: 600px;
+	padding: 7px;
+	border-radius: 12px;
+	background-color: var(--div-bg);
+
+	.item {
+		@include flex(center, center, 1rem);
+		@include size(100%, 50px);
+		position: relative;
+		.item-task {
+			@include size(90%, fit-content);
+			color: var(--text);
+		}
+
+		#cross {
+			@include size(50px, 100%);
+			@include flex(center, center, 0);
+			position: absolute;
+			right: 0;
+			opacity: 0;
+			cursor: pointer;
+
+			&:hover {
+				opacity: 100;
+			}
+		}
+	}
+
+	&.light {
+		--div-bg: hsl(0, 0%, 100%);
+		--border-check: rgb(243, 130, 64);
+		--bg-Gradient: linear-gradient(45deg, rgb(214, 58, 58), rgb(243, 130, 64));
+		--text: hsl(235, 19%, 35%);
+	}
+
+	&.dark {
+		--div-bg: hsl(235, 21%, 14%);
+		--border-check: hsl(233, 14%, 35%);
+		--bg-Gradient: linear-gradient(45deg, hsl(207, 59%, 16%), hsl(201, 66%, 21%));
+		--text: white;
+	}
+}
+
+.stats {
+	@include size(100%, fit-content);
+	@include flex(space-between, center, 0);
+	padding: 0.5rem 1rem;
+	font-size: 0.9rem;
+	color: var(--stat-text);
+
+	div {
+		@include flex(center, center, 0);
+	}
+
+	.filters {
+		@include size(50%, 25px);
+		@include flex(center, center, 1rem);
+
+		.filter {
+			@include size(fit-content, 100%);
+
+			&.selected {
+				color: var(--accent);
+			}
+		}
+	}
+
+	.clear,
+	.filter {
+		cursor: pointer;
+
+		&:hover {
+			color: var(--text);
+		}
+	}
+
+	&.light {
+		--accent: rgb(243, 130, 64);
+	}
+	&.dark {
+		--accent: hsl(201, 70%, 33%);
+	}
+}
+
+@media (max-width: 600px) {
+	.stats {
+		font-size: 0.7rem;
+	}
+
+	.content {
+		font-size: 1rem;
+	}
+}
