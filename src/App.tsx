@@ -133,8 +133,9 @@ const App: Component = () => {
 			<div class="content adaptive">
 				<div class="input ">
 					<div class="checkbox-div">
-						<label aria-label="Add finished task"></label>
-						<input type="checkbox" name="add-check" id="add-check" />
+						<label aria-label="Add finished task">
+							<input type="checkbox" name="add-check" id="add-check" />
+						</label>
 					</div>
 					<input type="text" name="add" id="add" onKeyPress={addTask} placeholder="Create a new todo..." />
 				</div>
