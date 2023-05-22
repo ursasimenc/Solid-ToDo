@@ -102,7 +102,7 @@ const App: Component = () => {
 	};
 
 	return (
-		<div class="wrapper adaptive">
+		<main class="wrapper adaptive">
 			<div class="bg-photo adaptive">
 				<div class="title_theme">
 					<h1 id="title">todo</h1>
@@ -130,68 +130,67 @@ const App: Component = () => {
 					</div>
 				</div>
 			</div>
-			<main>
-				<div class="content adaptive">
-					<div class="input ">
-						<div class="checkbox-div">
-							<input type="checkbox" name="add-check" id="add-check" />
-						</div>
-						<input type="text" name="add" id="add" onKeyPress={addTask} placeholder="Create a new todo..." />
+			<div class="content adaptive">
+				<div class="input ">
+					<div class="checkbox-div">
+						<label aria-label="Add finished task"></label>
+						<input type="checkbox" name="add-check" id="add-check" />
 					</div>
+					<input type="text" name="add" id="add" onKeyPress={addTask} placeholder="Create a new todo..." />
+				</div>
 
-					<div class="list adaptive">
-						<For
-							each={todos}
-							fallback={
+				<div class="list adaptive">
+					<For
+						each={todos}
+						fallback={
+							<div class="item">
+								{" "}
+								<span class="item-task">No tasks!</span>
+							</div>
+						}
+					>
+						{(todo) => {
+							return (
 								<div class="item">
-									{" "}
-									<span class="item-task">No tasks!</span>
-								</div>
-							}
-						>
-							{(todo) => {
-								return (
-									<div class="item">
-										<div class="checkbox-div">
-											<input type="checkbox" name="add-check" id="add-check" onChange={() => checkTask(todo.id, todo.checked)} checked={todo.checked} />
-										</div>
-										<span class="item-task">{todo.task}</span>
-										<div id="cross">
-											<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" onClick={() => removeTask(todo.id)}>
-												<path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z" />
-											</svg>
-										</div>
+									<div class="checkbox-div">
+										<input type="checkbox" name="add-check" id="add-check" onChange={() => checkTask(todo.id, todo.checked)} checked={todo.checked} />
 									</div>
-								);
-							}}
-						</For>{" "}
-						<div class="stats adaptive">
-							<div class="uncompleted">
-								{undone()}{" "}
-								<Show when={undone() === 1} fallback={<>items</>}>
-									item
-								</Show>{" "}
-								left
-							</div>
-							<div class="filters">
-								<div class="filter selected" id="filter-1" onClick={() => filterTasks(1)}>
-									All
+									<span class="item-task">{todo.task}</span>
+									<div id="cross">
+										<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" onClick={() => removeTask(todo.id)}>
+											<path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z" />
+										</svg>
+									</div>
 								</div>
-								<div class="filter" id="filter-2" onClick={() => filterTasks(2)}>
-									Active
-								</div>
-								<div class="filter" id="filter-3" onClick={() => filterTasks(3)}>
-									Completed
-								</div>
+							);
+						}}
+					</For>{" "}
+					<div class="stats adaptive">
+						<div class="uncompleted">
+							{undone()}{" "}
+							<Show when={undone() === 1} fallback={<>items</>}>
+								item
+							</Show>{" "}
+							left
+						</div>
+						<div class="filters">
+							<div class="filter selected" id="filter-1" onClick={() => filterTasks(1)}>
+								All
 							</div>
-							<div class="clear" onClick={removeCompletedTasks}>
-								Clear completed
+							<div class="filter" id="filter-2" onClick={() => filterTasks(2)}>
+								Active
 							</div>
+							<div class="filter" id="filter-3" onClick={() => filterTasks(3)}>
+								Completed
+							</div>
+						</div>
+						<div class="clear" onClick={removeCompletedTasks}>
+							Clear completed
 						</div>
 					</div>
 				</div>
-			</main>
-		</div>
+			</div>
+		</main>
 	);
 };
 
