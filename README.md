@@ -21,7 +21,7 @@ Users should be able to:
 - Clear all completed todos
 - Toggle light and dark mode
 
-The solution was built using Solid.js, TypeScript and Sass.
+The solution was built using Solid.js, TypeScript and Sass and uses localStorage to store the tasks in the browser.
 
 ## Screenshots
 
