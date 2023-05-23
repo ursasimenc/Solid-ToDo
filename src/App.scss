@@ -129,8 +129,10 @@ body {
 	input[type="checkbox"] {
 		@include size(20px, 20px);
 		@include flex(center, center, 0);
+		// makes the checkbox invisible
 		-webkit-appearance: none;
 		-moz-appearance: none;
+		// adds custom styles
 		border-radius: 5px;
 		border: 1px solid var(--accent);
 		background: transparent;
@@ -148,6 +150,7 @@ body {
 			background-position: center;
 			outline: none;
 			&:after {
+				// for the checkmark
 				content: url(./assets/icon-check.svg);
 			}
 		}
