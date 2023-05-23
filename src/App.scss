@@ -170,7 +170,7 @@ body {
 
 	&.dark {
 		--div-bg: hsl(235, 21%, 14%);
-		--accent: hsl(233, 14%, 35%);
+		--accent: hsl(216, 60%, 40%);
 		--bg-Gradient: linear-gradient(45deg, hsl(207, 59%, 16%), hsl(201, 66%, 21%));
 		--text: white;
 	}
@@ -221,7 +221,7 @@ body {
 	&.dark {
 		--bottom-border: hsl(237, 14%, 26%);
 		--div-bg: hsl(235, 21%, 14%);
-		--accent: hsl(233, 14%, 35%);
+		--accent: hsl(216, 60%, 40%);
 		--bg-Gradient: linear-gradient(45deg, hsl(207, 59%, 16%), hsl(201, 66%, 21%));
 		--text: white;
 	}
@@ -264,7 +264,7 @@ body {
 		--accent: rgb(243, 130, 64);
 	}
 	&.dark {
-		--accent: hsl(201, 38%, 30%);
+		--accent: hsl(216, 60%, 40%);
 	}
 }
 
