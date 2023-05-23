@@ -5,8 +5,7 @@
 		--bottom-border: hsla(237, 9%, 61%, 0.6);
 		--title-text: white;
 		--stat-text: hsl(234, 11%, 52%);
-		--border-check: rgb(243, 130, 64);
-		--accent: rgb(243, 130, 64);
+		--accent: hsl(32, 70%, 46%);
 		--div-bg: hsl(0, 0%, 100%);
 		--text: hsl(235, 19%, 35%);
 		--body-bg: hsl(0, 0%, 95%);
@@ -17,10 +16,9 @@
 @media (prefers-color-scheme: dark) {
 	:root {
 		--bottom-border: hsl(237, 14%, 26%);
-		--accent: hsl(201, 38%, 30%);
 		--title-text: white;
 		--stat-text: hsl(234, 11%, 52%);
-		--border-check: hsl(233, 14%, 35%);
+		--accent: hsl(216, 60%, 40%);
 		--div-bg: hsl(235, 21%, 14%);
 		--text: white;
 		--body-bg: hsl(235, 21%, 11%);
@@ -134,7 +132,7 @@ body {
 		-webkit-appearance: none;
 		-moz-appearance: none;
 		border-radius: 5px;
-		border: 1px solid var(--border-check);
+		border: 1px solid var(--accent);
 		background: transparent;
 		cursor: pointer;
 
@@ -164,17 +162,15 @@ body {
 	}
 
 	&.light {
-		--accent: rgb(243, 130, 64);
 		--div-bg: hsl(0, 0%, 100%);
-		--border-check: rgb(243, 130, 64);
+		--accent: rgb(243, 130, 64);
 		--bg-Gradient: linear-gradient(45deg, rgb(214, 58, 58), rgb(243, 130, 64));
 		--text: hsl(235, 19%, 35%);
 	}
 
 	&.dark {
-		--accent: hsl(201, 38%, 30%);
 		--div-bg: hsl(235, 21%, 14%);
-		--border-check: hsl(233, 14%, 35%);
+		--accent: hsl(233, 14%, 35%);
 		--bg-Gradient: linear-gradient(45deg, hsl(207, 59%, 16%), hsl(201, 66%, 21%));
 		--text: white;
 	}
@@ -217,7 +213,7 @@ body {
 	&.light {
 		--bottom-border: hsla(237, 9%, 61%, 0.6);
 		--div-bg: hsl(0, 0%, 100%);
-		--border-check: rgb(243, 130, 64);
+		--accent: rgb(243, 130, 64);
 		--bg-Gradient: linear-gradient(45deg, rgb(214, 58, 58), rgb(243, 130, 64));
 		--text: hsl(235, 19%, 35%);
 	}
@@ -225,7 +221,7 @@ body {
 	&.dark {
 		--bottom-border: hsl(237, 14%, 26%);
 		--div-bg: hsl(235, 21%, 14%);
-		--border-check: hsl(233, 14%, 35%);
+		--accent: hsl(233, 14%, 35%);
 		--bg-Gradient: linear-gradient(45deg, hsl(207, 59%, 16%), hsl(201, 66%, 21%));
 		--text: white;
 	}
