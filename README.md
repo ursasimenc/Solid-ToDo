@@ -1,4 +1,4 @@
-# Frontend Mentor - Password generator app solution
+# Frontend Mentor - To Do app solution
 
 This is a solution to the [To Do app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). I have made some adjustments to the design.
 
